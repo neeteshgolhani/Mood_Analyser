@@ -17,13 +17,13 @@ public class MoodAnalyser {
         if (message.toLowerCase().contains("happy")) {
             return "Happy";
         }
-        // Check if the message contains "sad" (case-insensitive)
-        else if (message.toLowerCase().contains("sad")) {
+        // Convert the message to lowercase for case-insensitive analysis
+        String lowercaseMessage = message.toLowerCase();
+        // Check for the keyword "sad" in the message
+        if (lowercaseMessage.contains("sad")) {
             return "Sad";
+        } else {
+            return "HAPPY";
         }
-
-        // If the message does not contain "happy" or "sad", return "Unknown"
-        return "Unknown";
     }
-
 }
