@@ -3,22 +3,20 @@ package com.bridgelabz;
 public class MoodAnalyser {
     private String message;
 
+    // Default constructor
+    public MoodAnalyser() {
+        this.message = "";
+    }
+
+    // Constructor with parameter
     public MoodAnalyser(String message) {
         this.message = message;
     }
 
-    public String analyseMood() throws MoodAnalysisException {
-        // Check if the message is null or empty
-        if (message == null || message.isEmpty()) {
-            throw new MoodAnalysisException("Message cannot be null or empty");
-        }
-
-        // Check if the message contains "happy" (case-insensitive)
-        if (message.toLowerCase().contains("happy")) {
-            return "Happy";
-        }
+    public String analyseMood() {
         // Convert the message to lowercase for case-insensitive analysis
         String lowercaseMessage = message.toLowerCase();
+
         // Check for the keyword "sad" in the message
         if (lowercaseMessage.contains("sad")) {
             return "Sad";
