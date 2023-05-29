@@ -4,4 +4,3 @@ public class MoodAnalysisException extends Exception {
         super(message); // Call the superclass (Exception) constructor with the provided message
     }
 }
-
