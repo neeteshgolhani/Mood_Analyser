@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class MoodAnayserTest {
     @Test
-    public void testAnalyseMood_SadMessage_ReturnsSAD() throws MoodAnalysisException {
+    public void testAnalyseMood_SadMessage_ReturnsSAD() throws moodAnalysisException {
         String message = "I am in Sad Mood"; // The given message
         MoodAnalyser moodAnalyser = new MoodAnalyser(message);
         // Create MoodAnalyser object with the given message
@@ -16,7 +16,7 @@ public class MoodAnayserTest {
     }
 
     @Test
-    public void testAnalyseMood_AnyOtherMessage_ReturnsHappy() throws MoodAnalysisException {
+    public void testAnalyseMood_AnyOtherMessage_ReturnsHappy() throws moodAnalysisException {
         String message = "I am in Any Mood";
         // The given message not containing the word "Sad"
         MoodAnalyser moodAnalyser = new MoodAnalyser(message);

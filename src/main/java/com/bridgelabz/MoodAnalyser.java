@@ -13,23 +13,23 @@ public class MoodAnalyser {
         this.message = message;
     }
 
-    public String analyseMood() {
+    public String analyseMood() throws moodAnalysisException {
         try {
             if (message == null) {
-                return "HAPPY";
+                throw new moodAnalysisException(moodAnalysisException.ErrorType.NULL_MOOD);
+            }
+            if (message.isEmpty()) {
+                throw new moodAnalysisException(moodAnalysisException.ErrorType.EMPTY_MOOD);
             }
 
-            // Convert the message to lowercase for case-insensitive analysis
             String lowercaseMessage = message.toLowerCase();
-
-            // Check for the keyword "sad" in the message
             if (lowercaseMessage.contains("sad")) {
                 return "SAD";
             } else {
                 return "HAPPY";
             }
-        } catch (Exception e) {
-            return "HAPPY";
+        } catch (moodAnalysisException e) {
+            throw e;
         }
     }
 }
