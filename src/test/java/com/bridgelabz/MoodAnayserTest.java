@@ -56,7 +56,7 @@ public class MoodAnayserTest {
     }
 
     @Test
-    public void testAnalyseMood_HappyMessageInConstructor_ReturnsHappy() {
+    public void testAnalyseMood_HappyMessageInConstructor_ReturnsHappy() throws moodAnalysisException {
         String message = "I am in Happy Mood";
         // The given message containing the word "Happy"
         MoodAnalyser moodAnalyser = new MoodAnalyser(message);
@@ -70,7 +70,7 @@ public class MoodAnayserTest {
     }
 
     @Test
-    public void testAnalyseMood_NoParameter_ReturnsHappy() {
+    public void testAnalyseMood_NoParameter_ReturnsHappy() throws moodAnalysisException {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         // Create MoodAnalyser object using the default constructor
 
@@ -81,7 +81,7 @@ public class MoodAnayserTest {
         // Verify that the actual mood matches the expected value "HAPPY"
     }
     @Test
-    public void testAnalyseMood_NullMessage_ReturnsHappy() {
+    public void testAnalyseMood_NullMessage_ReturnsHappy() throws moodAnalysisException {
         // Given
         String message = null; // The mood message is null
         MoodAnalyser moodAnalyser = new MoodAnalyser(message);
@@ -97,11 +97,26 @@ public class MoodAnayserTest {
     public void testAnalyseMood_NullMessage_ThrowsMoodAnalysisException() {
         // Given
         String message = null; // The mood message is null
-        MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
 
         // When and Then
         Assertions.assertThrows(MoodAnalysisException.class, () -> {
             moodAnalyser.analyseMood();
         });
+    }
+    @Test
+    public void testAnalyseMood_EmptyMessage_ThrowsMoodAnalysisException() {
+        // Given
+        String message = ""; // The mood message is empty
+        MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+
+        // When and Then
+        MoodAnalysisException exception = Assertions.assertThrows(MoodAnalysisException.class, () -> {
+            moodAnalyser.analyseMood();
+        });
+
+        // Verify the exception type and error message
+        Assertions.assertEquals(MoodAnalysisException.ErrorType.EMPTY_MOOD, exception.getErrorType());
+        Assertions.assertEquals("MoodAnalysisException: EMPTY_MOOD", exception.toString());
     }
 }

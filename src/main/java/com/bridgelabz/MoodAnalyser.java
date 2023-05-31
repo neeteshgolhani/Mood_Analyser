@@ -12,7 +12,6 @@ public class MoodAnalyser {
     public MoodAnalyser(String message) {
         this.message = message;
     }
-
     public String analyseMood() throws moodAnalysisException {
         try {
             if (message == null) {
