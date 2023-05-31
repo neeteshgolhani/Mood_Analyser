@@ -80,4 +80,16 @@ public class MoodAnayserTest {
         Assertions.assertEquals("HAPPY", mood);
         // Verify that the actual mood matches the expected value "HAPPY"
     }
+    @Test
+    public void testAnalyseMood_NullMessage_ReturnsHappy() {
+        // Given
+        String message = null; // The mood message is null
+        MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+
+        // When
+        String mood = moodAnalyser.analyseMood();
+
+        // Then
+        Assertions.assertEquals("HAPPY", mood);
+    }
 }

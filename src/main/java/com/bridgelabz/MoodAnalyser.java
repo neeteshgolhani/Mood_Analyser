@@ -14,13 +14,21 @@ public class MoodAnalyser {
     }
 
     public String analyseMood() {
-        // Convert the message to lowercase for case-insensitive analysis
-        String lowercaseMessage = message.toLowerCase();
+        try {
+            if (message == null) {
+                return "HAPPY";
+            }
 
-        // Check for the keyword "sad" in the message
-        if (lowercaseMessage.contains("sad")) {
-            return "Sad";
-        } else {
+            // Convert the message to lowercase for case-insensitive analysis
+            String lowercaseMessage = message.toLowerCase();
+
+            // Check for the keyword "sad" in the message
+            if (lowercaseMessage.contains("sad")) {
+                return "SAD";
+            } else {
+                return "HAPPY";
+            }
+        } catch (Exception e) {
             return "HAPPY";
         }
     }
