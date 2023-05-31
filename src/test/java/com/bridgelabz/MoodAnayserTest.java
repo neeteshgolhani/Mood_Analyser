@@ -30,7 +30,7 @@ public class MoodAnayserTest {
     }
 
     @Test
-    public void testAnalyseMood_SadMessageInConstructor_ReturnsSad() {
+    public void testAnalyseMood_SadMessageInConstructor_ReturnsSad() throws moodAnalysisException {
         String message = "I am in Sad Mood";
         // The given message containing the word "Sad"
         MoodAnalyser moodAnalyser = new MoodAnalyser(message);
@@ -44,7 +44,7 @@ public class MoodAnayserTest {
     }
 
     @Test
-    public void testAnalyseMood_NoParameter_ReturnsSad() {
+    public void testAnalyseMood_NoParameter_ReturnsSad() throws moodAnalysisException {
         MoodAnalyser moodAnalyser = new MoodAnalyser();
         // Create MoodAnalyser object using the default constructor
 
@@ -91,5 +91,17 @@ public class MoodAnayserTest {
 
         // Then
         Assertions.assertEquals("HAPPY", mood);
+
+    }
+    @Test
+    public void testAnalyseMood_NullMessage_ThrowsMoodAnalysisException() {
+        // Given
+        String message = null; // The mood message is null
+        MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+
+        // When and Then
+        Assertions.assertThrows(MoodAnalysisException.class, () -> {
+            moodAnalyser.analyseMood();
+        });
     }
 }
